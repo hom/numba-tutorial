@@ -10,7 +10,7 @@ def matmul(A, B, C):
     # x, y = cuda.grid(2)
     # 具体计算公式如下
     row = cuda.threadIdx.x + cuda.blockDim.x * cuda.blockIdx.x
-    col = cuda.threadIdx.y = cuda.blockDim.y * cuda.blockIdx.y
+    col = cuda.threadIdx.y + cuda.blockDim.y * cuda.blockIdx.y
     if row < C.shape[0] and col < C.shape[1]:
         tmp = 0
         for k in range(A.shape[1]):
